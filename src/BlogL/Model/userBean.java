@@ -4,7 +4,18 @@ public class userBean {
     private String userID;
     private String userName;
     private String userPassword;
+
     private String userProfileImgUrl=null;
+
+    public userBean(String userID, String userName, String userPassword, String userProfileImgUrl) {
+        this.userID = userID;
+        this.userName = userName;
+        this.userPassword = userPassword;
+        this.userProfileImgUrl = userProfileImgUrl;
+    }
+
+
+
 
 
     public void setUserID(String userID) {

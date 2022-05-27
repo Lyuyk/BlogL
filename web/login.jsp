@@ -22,7 +22,7 @@
 <form action="<%=request.getContextPath()%>/BlogL/login" method="post">
     <div class="form-group">
         <label for="blog_account">用户名</label>
-        <input type="email" class="form-control" id="blog_account" name="userName" placeholder="Email">
+        <input type="text" class="form-control" id="blog_account" name="userName" placeholder="用户名">
     </div>
     <div class="form-group">
         <label for="blog_Password">密码</label>
