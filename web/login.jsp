@@ -19,9 +19,9 @@
     <%--    <link href="/css/bootstrap.min.css" rel="stylesheet">--%>
 </head>
 <body>
-<form action="<%=request.getContextPath()%>/allArticles" method="post">
+<form action="<%=request.getContextPath()%>/BlogL/login" method="post">
     <div class="form-group">
-        <label for="blog_account">账号</label>
+        <label for="blog_account">用户名</label>
         <input type="email" class="form-control" id="blog_account" name="userName" placeholder="Email">
     </div>
     <div class="form-group">
@@ -35,12 +35,10 @@
                 login_error_msg="";
         %>
         <span style="color:red;"><%=login_error_msg%></span>
-        <a   href=" " title="忘记密码">忘记密码?&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</ a>
+        <a   href=" " title="忘记密码">忘记密码?&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
     </div>
     <div align="center">  <button type="submit" class="btn btn-primary">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;登录&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
     </div>
 </form>
-<button type="button" class="btn btn-primary">（首选项）Primary</button>
-
 </body>
 </html>
