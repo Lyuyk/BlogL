@@ -6,6 +6,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class loginCheck {
     private static loginCheck BLOG_SQL_CHECK;
@@ -73,7 +75,7 @@ public class loginCheck {
     /*
     查找所有的账号匹配的账号密码（登陆确认）
      */
-    public userBean loginMatch(String userId,String password) throws Exception
+    public static userBean loginMatch(String userId, String password) throws Exception
     {
         String sql="SELECT * FORM user";
         userBean userBeanData=null;
@@ -144,6 +146,49 @@ public class loginCheck {
 
     public userBean findUserByUserId(String userId) throws Exception
     {
+        String sql="SELECT * FROM user WHERE user_id=?";
+        userBean userBeanData=null;
+        try(Connection conn=druidTool.connection();PreparedStatement ps= conn.prepareStatement(sql))
+        {
+            ps.setString(1,userId);
+            ResultSet res=ps.executeQuery();
+            while (res.next())
+            {
+                userBeanData=new userBean(res.getString("user_id"),res.getString("user_name"),res.getString("user_password"),res.getString("user_profile_img"));
+            }
+        }
+        return userBeanData;
+    }
 
+    public userBean findUserByUserName(String userName) throws Exception
+    {
+        String sql="SELECT * FROM user WHERE user_name=?";
+        userBean userBeanData=null;
+        try(Connection conn=druidTool.connection();PreparedStatement ps= conn.prepareStatement(sql))
+        {
+            ps.setString(1,userName);
+            ResultSet res=ps.executeQuery();
+            while (res.next())
+            {
+                userBeanData=new userBean(res.getString("user_id"),res.getString("user_name"),res.getString("user_password"),res.getString("user_profile_img"));
+            }
+        }
+        return userBeanData;
+    }
+
+    public List<userBean> findAllUser() throws Exception
+    {
+        String sql="SELECT * FROM user";
+        List<userBean> userBeansData=null;
+        try(Connection conn=druidTool.connection();PreparedStatement ps= conn.prepareStatement(sql))
+        {
+            ResultSet res=ps.executeQuery();
+            userBeansData=new ArrayList<>();
+            while (res.next())
+            {
+                userBeansData.add(new userBean(res.getString("user_id"),res.getString("user_name"),res.getString("user_password"),res.getString("user_profile_img")));
+            }
+        }
+        return userBeansData;
     }
 }

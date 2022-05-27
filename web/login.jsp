@@ -30,7 +30,7 @@
     </div>
     <div align="right">
         <% String login_error_msg;
-            login_error_msg = (String) request.getAttribute("login_error_msg");
+            login_error_msg = (String) request.getAttribute("loginErrorMsg");
             if(login_error_msg==null)
                 login_error_msg="";
         %>

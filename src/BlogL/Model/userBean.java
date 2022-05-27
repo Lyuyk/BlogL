@@ -15,9 +15,6 @@ public class userBean {
     }
 
 
-
-
-
     public void setUserID(String userID) {
         this.userID = userID;
     }
