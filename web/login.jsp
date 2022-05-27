@@ -7,35 +7,40 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <jsp:useBean id="loginBean" class="BlogL.Model.userBean" scope="session"/>
+<link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
+<script src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/bootstrap.js"></script>
 <html>
 <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>login | BlogL</title>
+    <%--    <link href="/css/bootstrap.min.css" rel="stylesheet">--%>
 </head>
 <body>
-    <font size=2>
-        <div align="center">
-            <table border=2>
-                <tr>
-                    <th>
-                        login
-                    </th>
-                </tr>
-                <table action="loginServlet" method="post">
-                    <tr>
-                        <td>
-                            Username<input type="text" name="userName">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            Password<input type="password" name="password">
-                        </td>
-                    </tr>
-                </table>
-                <input type="submit" name="g" value="提交">
-                </form>
-            </table>
-        </div>
-    </font>
+<form action="<%=request.getContextPath()%>/allArticles" method="post">
+    <div class="form-group">
+        <label for="blog_account">账号</label>
+        <input type="email" class="form-control" id="blog_account" name="userName" placeholder="Email">
+    </div>
+    <div class="form-group">
+        <label for="blog_Password">密码</label>
+        <input type="password" class="form-control" name="password" id="blog_Password" placeholder="注意区分大小写">
+    </div>
+    <div align="right">
+        <% String login_error_msg;
+            login_error_msg = (String) request.getAttribute("login_error_msg");
+            if(login_error_msg==null)
+                login_error_msg="";
+        %>
+        <span style="color:red;"><%=login_error_msg%></span>
+        <a   href=" " title="忘记密码">忘记密码?&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</ a>
+    </div>
+    <div align="center">  <button type="submit" class="btn btn-primary">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;登录&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+    </div>
+</form>
+<button type="button" class="btn btn-primary">（首选项）Primary</button>
+
 </body>
 </html>

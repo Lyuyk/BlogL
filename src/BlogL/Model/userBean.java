@@ -1,12 +1,11 @@
 package BlogL.Model;
 
 public class userBean {
-    private String userID,userName,userPassword;
+    private String userID;
+    private String userName;
+    private String userPassword;
+    private String userProfileImgUrl=null;
 
-    public userBean()
-    {
-        super();
-    }
 
     public void setUserID(String userID) {
         this.userID = userID;
@@ -30,5 +29,14 @@ public class userBean {
 
     public String getUserPassword() {
         return userPassword;
+    }
+
+    public void setUserProfileImgUrl(String userProfileImgUrl)
+    {
+        this.userProfileImgUrl=userProfileImgUrl;
+    }
+
+    public String getUserProfileImgUrl() {
+        return userProfileImgUrl;
     }
 }

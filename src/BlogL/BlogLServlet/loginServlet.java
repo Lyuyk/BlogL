@@ -1,19 +1,20 @@
 package BlogL.BlogLServlet;
 
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpSession;
+import jakarta.servlet.*;
+import jakarta.servlet.http.*;
+import jakarta.servlet.annotation.*;
 
-import BlogL.Utils.stringUtils;
-public class loginServlet {
+import java.io.IOException;
 
-    public static void login(HttpServletRequest request)
-    {
-        String userName=request.getParameter("userName");
-        String password=request.getParameter("password");
+@WebServlet(name = "loginServlet", urlPatterns = "/login")
+public class loginServlet extends HttpServlet {
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        if(stringUtils.isEmpty(userName)||stringUtils.isEmpty(password))
-            return;
+    }
 
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
 }

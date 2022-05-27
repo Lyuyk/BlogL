@@ -1,4 +1,4 @@
-package BlogL.Tool;
+package BlogL.Database;
 
 import com.alibaba.druid.pool.DruidDataSourceFactory;
 
