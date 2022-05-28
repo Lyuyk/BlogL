@@ -1,7 +1,9 @@
 package BlogL.Database;
 
 import BlogL.Model.userBean;
+import jakarta.servlet.ServletException;
 
+import java.rmi.ServerException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -77,17 +79,28 @@ public class loginCheck {
      */
     public static userBean loginMatch(String userId, String password) throws Exception
     {
-        String sql="SELECT * FORM user";
+        String sql="SELECT * FROM user";
+        //System.out.println(11);
         userBean userBeanData=null;
-        try(Connection conn=druidTool.connection();PreparedStatement ps=conn.prepareStatement(sql);ResultSet res=ps.executeQuery();)
+        try(Connection conn=druidTool.connection();PreparedStatement ps=conn.prepareStatement(sql);ResultSet res=ps.executeQuery())
         {
+            //System.out.println("trydT");
             while (res.next())
             {
+                //System.out.println("whileIN");
                 if(res.getString("user_id").equals(userId)&&res.getString("user_password").equals(password))
                 {
                     userBeanData=new userBean(res.getString("user_id"),res.getString("user_name"),res.getString("user_password"),res.getString("user_profile_img"));
+                    System.out.println(res.getString("user_id")+res.getString("user_password"));
                     break;
+
                 }
+                else{
+                    throw new Exception("");
+                    //System.out.println(res.getString("user_id")+res.getString("user_password"));
+                    //System.out.println(userId+password);
+                }
+
             }
         }
         return userBeanData;
@@ -95,7 +108,7 @@ public class loginCheck {
 
     public void updateProfile(String userId,String newFileName) throws Exception
     {
-        String sql="UPDATE user SET 'user_profile_img'=? WHERE user_name=?";
+        String sql="UPDATE user SET `user_profile_img`=? WHERE user_name=?";
         try (Connection conn=druidTool.connection();PreparedStatement ps= conn.prepareStatement(sql))
         {
             ps.setString(1,newFileName);
@@ -114,7 +127,7 @@ public class loginCheck {
         {
             return false;
         }
-        String sql="UPDATE user SET 'user_name'=?, 'user_profile_img'=? WHERE 'user_name'=?";
+        String sql="UPDATE user SET `user_name`=?, `user_profile_img`=? WHERE `user_name`=?";
         try(Connection conn=druidTool.connection();PreparedStatement ps= conn.prepareStatement(sql))
         {
             ps.setString(1,userName);

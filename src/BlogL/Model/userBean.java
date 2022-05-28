@@ -5,7 +5,7 @@ public class userBean {
     private String userName;
     private String userPassword;
 
-    private String userProfileImgUrl=null;
+    private String userProfileImgUrl;
 
     public userBean(String userID, String userName, String userPassword, String userProfileImgUrl) {
         this.userID = userID;

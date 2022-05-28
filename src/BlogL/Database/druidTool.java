@@ -17,14 +17,21 @@ public class druidTool {
         {
             Properties properties=new Properties();
             InputStream druidInputStream = druidTool.class.getClassLoader().getResourceAsStream("druid.properties");
+            //System.out.println(druidInputStream.toString());
+            //System.out.println("dT");
             properties.load(druidInputStream);
             DATA_SOURCE = DruidDataSourceFactory.createDataSource(properties);
         }
         return DATA_SOURCE;
     }
 
-    public static Connection connection() throws Exception
+    public static Connection connection()
     {
-        return dataSource().getConnection();
+        try {
+            return dataSource().getConnection();
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
     }
 }

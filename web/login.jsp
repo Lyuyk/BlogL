@@ -5,8 +5,10 @@
   Time: 下午 3:06
   FileName: login
 --%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<jsp:useBean id="loginBean" class="BlogL.Model.userBean" scope="session"/>
+<jsp:include page="/pages/navigationBar.jsp"/>
+<!--jsp:useBean id="loginBean" class="BlogL.Model.userBean" scope="session"/-->
 <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
 <script src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
 <script src="${pageContext.request.contextPath}/js/bootstrap.js"></script>
@@ -19,14 +21,16 @@
     <%--    <link href="/css/bootstrap.min.css" rel="stylesheet">--%>
 </head>
 <body>
+<div align="center">
+<div style="width: 300px" >
 <form action="<%=request.getContextPath()%>/BlogL/login" method="post">
-    <div class="form-group">
-        <label for="blog_account">用户名</label>
-        <input type="text" class="form-control" id="blog_account" name="userName" placeholder="用户名">
+    <div class="form-group" >
+        <label for="user_id">账号</label>
+        <input type="text" class="form-control" id="user_id" name="user_id" placeholder="账号">
     </div>
     <div class="form-group">
-        <label for="blog_Password">密码</label>
-        <input type="password" class="form-control" name="password" id="blog_Password" placeholder="注意区分大小写">
+        <label for="user_password">密码</label>
+        <input type="password" class="form-control" name="user_password" id="user_password" placeholder="注意区分大小写">
     </div>
     <div align="right">
         <% String login_error_msg;
@@ -40,5 +44,8 @@
     <div align="center">  <button type="submit" class="btn btn-primary">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;登录&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
     </div>
 </form>
+    <div align="center">  <button type="submit" class="btn btn-primary" onclick="location='<%=request.getContextPath()%>/pages/register.jsp'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;注册&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button></div>
+</div>
+</div>
 </body>
 </html>
